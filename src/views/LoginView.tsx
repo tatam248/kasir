@@ -102,74 +102,29 @@ WHERE \`username\` = 'admin';`;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-mandiri-navy-dark to-[#001833] flex flex-col justify-between p-4">
-      <div className="flex-1 flex items-center justify-center py-4">
-        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-700/40">
-          {/* Left Side: Brand & System Features */}
-          <div className="bg-gradient-to-br from-mandiri-navy via-[#00224b] to-mandiri-navy-dark text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-mandiri-orange/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-mandiri-gold/15 rounded-full blur-2xl pointer-events-none" />
-
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-white text-mandiri-navy flex items-center justify-center font-black text-2xl shadow-xl border border-mandiri-gold/40">
-                  K
-                </div>
-                <div>
-                  <h1 className="text-2xl font-black tracking-wide leading-none">
-                    KASIR<span className="text-mandiri-gold">PRO</span>
-                  </h1>
-                  <p className="text-xs text-amber-200/90 uppercase tracking-widest mt-1 font-semibold">
-                    Point of Sale & Inventory
-                  </p>
-                </div>
+    <div className="min-h-[100dvh] w-full bg-gradient-to-br from-slate-950 via-mandiri-navy-dark to-[#001833] flex flex-col justify-between p-3 sm:p-6 overflow-y-auto">
+      <div className="flex-1 flex items-center justify-center py-2 sm:py-6 my-auto w-full">
+        <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-slate-700/40 my-2 sm:my-4">
+          
+          {/* Mobile First: Login Form is Order 1 on mobile, Order 2 on desktop */}
+          <div className="order-1 md:order-2 p-5 sm:p-8 md:p-12 flex flex-col justify-center bg-white">
+            {/* Mobile Brand Header */}
+            <div className="md:hidden flex items-center gap-3 mb-5 pb-4 border-b border-slate-100">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-mandiri-navy to-mandiri-navy-light text-white flex items-center justify-center font-black text-xl shadow-md border border-mandiri-gold/40">
+                K
               </div>
-
-              <h2 className="text-xl sm:text-2xl font-extrabold text-white leading-snug mb-3">
-                Solusi Kasir & Pengelolaan Stok Terintegrasi
-              </h2>
-              <p className="text-slate-200/90 text-xs sm:text-sm leading-relaxed mb-6">
-                Sistem kasir cepat, kartu stok multi-pergerakan, kalkulasi HPP Rata-rata Tertimbang, dan kontrol hak akses pengguna berbasis RBAC.
-              </p>
-
-              <div className="space-y-2.5 text-xs text-slate-200 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
-                  <span>Single Source of Truth dengan MySQL / Relasional</span>
+              <div>
+                <div className="text-lg font-black tracking-wide text-mandiri-navy leading-none">
+                  KASIR<span className="text-mandiri-gold">PRO</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
-                  <span>Stock Ledger (Kartu Stok) & Stock Opname</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
-                  <span>Cetak Struk Thermal 58mm & 80mm</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
-                  <span>Keamanan Sandi Enkripsi Bcrypt & Otorisasi PIN</span>
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mt-0.5">
+                  Point of Sale & Inventory
                 </div>
               </div>
             </div>
 
-            {/* Clean Security Info */}
-            <div className="mt-8 pt-6 border-t border-slate-700/60 relative z-10 flex items-center gap-3">
-              <div className="p-2.5 bg-white/10 rounded-xl border border-mandiri-gold/30">
-                <ShieldCheck className="w-5 h-5 text-mandiri-gold" />
-              </div>
-              <div className="text-xs">
-                <div className="font-bold text-white">Autentikasi Terpusat</div>
-                <div className="text-[11px] text-slate-300">
-                  Akun pengguna dan role dikelola langsung dari database.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side: Login Form */}
-          <div className="p-8 sm:p-12 flex flex-col justify-center bg-white">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-slate-800">Masuk ke Sistem</h2>
+            <div className="mb-5 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-800">Masuk ke Sistem</h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
                 Gunakan kredensial akun kasir atau staf Anda untuk mulai bekerja.
               </p>
@@ -299,10 +254,73 @@ WHERE \`username\` = 'admin';`;
               </button>
             </div>
           </div>
+
+          {/* Brand & System Features Panel: Order 2 on mobile, Order 1 on desktop */}
+          <div className="order-2 md:order-1 bg-gradient-to-br from-mandiri-navy via-[#00224b] to-mandiri-navy-dark text-white p-6 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-mandiri-orange/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 bg-mandiri-gold/15 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="hidden md:flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-white text-mandiri-navy flex items-center justify-center font-black text-2xl shadow-xl border border-mandiri-gold/40">
+                  K
+                </div>
+                <div>
+                  <h1 className="text-2xl font-black tracking-wide leading-none">
+                    KASIR<span className="text-mandiri-gold">PRO</span>
+                  </h1>
+                  <p className="text-xs text-amber-200/90 uppercase tracking-widest mt-1 font-semibold">
+                    Point of Sale & Inventory
+                  </p>
+                </div>
+              </div>
+
+              <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-white leading-snug mb-3">
+                Solusi Kasir & Pengelolaan Stok Terintegrasi
+              </h2>
+              <p className="text-slate-200/90 text-xs sm:text-sm leading-relaxed mb-5 md:mb-6">
+                Sistem kasir cepat, kartu stok multi-pergerakan, kalkulasi HPP Rata-rata Tertimbang, dan kontrol hak akses pengguna berbasis RBAC.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2.5 text-xs text-slate-200 font-medium">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
+                  <span>Single Source of Truth dengan MySQL / Relasional</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
+                  <span>Stock Ledger (Kartu Stok) & Stock Opname</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
+                  <span>Cetak Struk Thermal 58mm & 80mm</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-mandiri-gold shrink-0" />
+                  <span>Keamanan Sandi Enkripsi Bcrypt & Otorisasi PIN</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Clean Security Info */}
+            <div className="mt-6 md:mt-8 pt-5 border-t border-slate-700/60 relative z-10 flex items-center gap-3">
+              <div className="p-2.5 bg-white/10 rounded-xl border border-mandiri-gold/30">
+                <ShieldCheck className="w-5 h-5 text-mandiri-gold" />
+              </div>
+              <div className="text-xs">
+                <div className="font-bold text-white">Autentikasi Terpusat</div>
+                <div className="text-[11px] text-slate-300">
+                  Akun pengguna dan role dikelola langsung dari database.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <Footer variant="dark" />
+      <div className="mt-4 shrink-0">
+        <Footer variant="dark" />
+      </div>
 
       <ServerConfigModal
         isOpen={showServerModal}
