@@ -1,0 +1,1253 @@
+{
+  "roles": [
+    {
+      "id": "role-super-admin",
+      "code": "super_admin",
+      "name": "Super Admin",
+      "description": "Akses penuh ke seluruh modul sistem dan konfigurasi teknis.",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "role-owner",
+      "code": "owner",
+      "name": "Owner / Pemilik",
+      "description": "Akses dashboard, laporan keuangan, laba, inventory, pembelian, dan monitoring.",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "role-manager",
+      "code": "manager",
+      "name": "Manager Operasional",
+      "description": "Mengelola operasional toko harian, approval transaksi sensitif, dan staf.",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "role-inventory",
+      "code": "admin_inventory",
+      "name": "Admin Inventory",
+      "description": "Mengelola produk, supplier, pembelian, kartu stok, dan stock opname.",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "role-kasir",
+      "code": "kasir",
+      "name": "Kasir (POS)",
+      "description": "Melakukan transaksi penjualan kasir, cetak struk, dan shift kerja.",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "perm-prod-view",
+      "code": "product.view",
+      "name": "Melihat Produk",
+      "module": "Produk",
+      "description": "Melihat daftar produk"
+    },
+    {
+      "id": "perm-prod-create",
+      "code": "product.create",
+      "name": "Menambah Produk",
+      "module": "Produk",
+      "description": "Menambah produk baru"
+    },
+    {
+      "id": "perm-prod-edit",
+      "code": "product.edit",
+      "name": "Mengedit Produk",
+      "module": "Produk",
+      "description": "Mengubah produk dan harga"
+    },
+    {
+      "id": "perm-prod-delete",
+      "code": "product.delete",
+      "name": "Menghapus Produk",
+      "module": "Produk",
+      "description": "Soft-delete produk"
+    },
+    {
+      "id": "perm-inv-view",
+      "code": "inventory.view",
+      "name": "Melihat Kartu Stok",
+      "module": "Inventory",
+      "description": "Melihat histori stok"
+    },
+    {
+      "id": "perm-inv-adjust",
+      "code": "inventory.adjust",
+      "name": "Penyesuaian Stok",
+      "module": "Inventory",
+      "description": "Membuat adjustment"
+    },
+    {
+      "id": "perm-inv-opname",
+      "code": "inventory.opname",
+      "name": "Stock Opname",
+      "module": "Inventory",
+      "description": "Input & approve opname"
+    },
+    {
+      "id": "perm-pur-view",
+      "code": "purchase.view",
+      "name": "Melihat Pembelian",
+      "module": "Pembelian",
+      "description": "Melihat PO & invoice"
+    },
+    {
+      "id": "perm-pur-create",
+      "code": "purchase.create",
+      "name": "Membuat Pembelian",
+      "module": "Pembelian",
+      "description": "Input PO pembelian"
+    },
+    {
+      "id": "perm-pur-approve",
+      "code": "purchase.approve",
+      "name": "Approval Pembelian",
+      "module": "Pembelian",
+      "description": "Approval penerimaan"
+    },
+    {
+      "id": "perm-pos-trans",
+      "code": "pos.transaction",
+      "name": "Transaksi Kasir",
+      "module": "POS",
+      "description": "Melayani penjualan kasir"
+    },
+    {
+      "id": "perm-pos-disc",
+      "code": "pos.discount",
+      "name": "Diskon Kasir",
+      "module": "POS",
+      "description": "Memberikan diskon kasir"
+    },
+    {
+      "id": "perm-pos-cancel",
+      "code": "pos.cancel",
+      "name": "Membatalkan Transaksi",
+      "module": "POS",
+      "description": "Batalkan invoice"
+    },
+    {
+      "id": "perm-pos-refund",
+      "code": "pos.refund",
+      "name": "Retur & Refund",
+      "module": "POS",
+      "description": "Retur barang penjualan"
+    },
+    {
+      "id": "perm-rep-sales",
+      "code": "report.sales",
+      "name": "Laporan Penjualan",
+      "module": "Laporan",
+      "description": "Laporan omzet penjualan"
+    },
+    {
+      "id": "perm-rep-profit",
+      "code": "report.profit",
+      "name": "Laporan Laba HPP",
+      "module": "Laporan",
+      "description": "Laba kotor berbasis HPP"
+    },
+    {
+      "id": "perm-rep-inv",
+      "code": "report.inventory",
+      "name": "Laporan Inventory",
+      "module": "Laporan",
+      "description": "Valuasi & status stok"
+    },
+    {
+      "id": "perm-rep-cash",
+      "code": "report.finance",
+      "name": "Laporan Keuangan",
+      "module": "Laporan",
+      "description": "Buku kas, piutang, hutang"
+    },
+    {
+      "id": "perm-user-mgmt",
+      "code": "user.manage",
+      "name": "Manajemen Pengguna",
+      "module": "Pengguna",
+      "description": "Kelola akun & hak akses"
+    },
+    {
+      "id": "perm-set-mgmt",
+      "code": "settings.manage",
+      "name": "Pengaturan Toko",
+      "module": "Pengaturan",
+      "description": "Profil toko & backup DB"
+    }
+  ],
+  "rolePermissions": [
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-prod-view"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-prod-create"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-prod-edit"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-prod-delete"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-inv-view"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-inv-adjust"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-inv-opname"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pur-view"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pur-create"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pur-approve"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pos-trans"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pos-disc"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pos-cancel"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-pos-refund"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-rep-sales"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-rep-profit"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-rep-inv"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-rep-cash"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-user-mgmt"
+    },
+    {
+      "roleId": "role-super-admin",
+      "permissionId": "perm-set-mgmt"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-prod-view"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-inv-view"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-pur-view"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-pos-trans"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-rep-sales"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-rep-profit"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-rep-inv"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-rep-cash"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-user-mgmt"
+    },
+    {
+      "roleId": "role-owner",
+      "permissionId": "perm-set-mgmt"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-prod-view"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-prod-create"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-prod-edit"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-inv-view"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-inv-adjust"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-inv-opname"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pur-view"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pur-create"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pur-approve"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pos-trans"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pos-disc"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pos-cancel"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-pos-refund"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-rep-sales"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-rep-inv"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-rep-cash"
+    },
+    {
+      "roleId": "role-manager",
+      "permissionId": "perm-set-mgmt"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-prod-view"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-prod-create"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-prod-edit"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-prod-delete"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-inv-view"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-inv-adjust"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-inv-opname"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-pur-view"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-pur-create"
+    },
+    {
+      "roleId": "role-inventory",
+      "permissionId": "perm-rep-inv"
+    },
+    {
+      "roleId": "role-kasir",
+      "permissionId": "perm-pos-trans"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr-admin",
+      "username": "admin",
+      "name": "Administrator",
+      "email": "admin@kasirpro.local",
+      "passwordHash": "$2b$10$byenLreL4ftG6JMqfbRjguGmchwzNdbmi3MwJ9FlJiKbxYYRgIsPi",
+      "roleId": "role-super-admin",
+      "phone": null,
+      "supervisorPin": "123456",
+      "status": "active",
+      "failedLoginAttempts": 0,
+      "lastLoginAt": "2026-10-26T10:43:04.762Z",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-10-26T10:43:13.855Z"
+    },
+    {
+      "id": "usr-1790688255134",
+      "username": "kasir01",
+      "name": "Budi Kasir",
+      "email": null,
+      "passwordHash": "$2b$10$osjhXgOM8wux231UEcLcdOQIm47xbrGKAQu8blvADA3GKhfIGpyGy",
+      "roleId": "role-kasir",
+      "phone": null,
+      "supervisorPin": null,
+      "status": "active",
+      "failedLoginAttempts": 0,
+      "lastLoginAt": null,
+      "createdAt": "2026-09-29T13:24:15.134Z",
+      "updatedAt": "2026-09-29T13:24:15.134Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-sembako",
+      "code": "SEMBAKO",
+      "name": "Sembako & Pangan Pokok",
+      "description": "Beras, minyak, gula, tepung",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cat-minuman",
+      "code": "MINUMAN",
+      "name": "Minuman & Kopi",
+      "description": "Air mineral, teh, kopi kemasan",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cat-makanan",
+      "code": "MAKANAN",
+      "name": "Makanan Ringan & Biskuit",
+      "description": "Mie instan, biskuit, camilan",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cat-pembersih",
+      "code": "KEBUTUHAN_RUMAH",
+      "name": "Kebutuhan Rumah Tangga",
+      "description": "Sabun, deterjen, pasta gigi",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cat-bumbu",
+      "code": "BUMBU_DAPUR",
+      "name": "Bumbu & Bahan Dapur",
+      "description": "Kecap, saus, penyedap rasa",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "brands": [
+    {
+      "id": "brd-indofood",
+      "name": "Indofood",
+      "description": "Indomie, bumbu racik",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "brd-unilever",
+      "name": "Unilever",
+      "description": "Lifebuoy, Sunlight, Rinso",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "brd-mayora",
+      "name": "Mayora",
+      "description": "Roma, Beng-Beng, Torabika",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "brd-wings",
+      "name": "Wings",
+      "description": "Daia, SoKlin, Mie Sedaap",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "brd-danone",
+      "name": "Danone Aqua",
+      "description": "Aqua air mineral",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "units": [
+    {
+      "id": "unit-pcs",
+      "code": "PCS",
+      "name": "Pieces",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-box",
+      "code": "BOX",
+      "name": "Box",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-pack",
+      "code": "PACK",
+      "name": "Pack",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-kg",
+      "code": "KG",
+      "name": "Kilogram",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-gram",
+      "code": "GRAM",
+      "name": "Gram",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-liter",
+      "code": "LITER",
+      "name": "Liter",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-dus",
+      "code": "DUS",
+      "name": "Dus",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "unit-renteng",
+      "code": "RENTENG",
+      "name": "Renteng",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup-001",
+      "code": "SUP-001",
+      "name": "PT Sumber Pangan Nusantara",
+      "address": "Kawasan Industri Pulogadung Blok B No. 12, Jakarta Timur",
+      "phone": "021-4601234",
+      "whatsapp": "08111223344",
+      "email": "sales@sumberpangan.co.id",
+      "picName": "Hendra Setiawan",
+      "bankAccount": "BCA 1234567890 a/n PT Sumber Pangan",
+      "notes": "Supplier utama beras dan sembako berkualitas.",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sup-002",
+      "code": "SUP-002",
+      "name": "Distributor Maju Jaya Grosir",
+      "address": "Jl. Daan Mogot KM 14 No. 88, Kalideres, Jakarta Barat",
+      "phone": "021-5409876",
+      "whatsapp": "081233445566",
+      "email": "order@majujayagrosir.com",
+      "picName": "Dewi Lestari",
+      "bankAccount": "Mandiri 0987654321 a/n CV Maju Jaya",
+      "notes": "Distributor resmi mie instan, biskuit, dan minuman kemasan.",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cust-umum",
+      "code": "CUST-000",
+      "name": "Pelanggan Umum",
+      "phone": "-",
+      "whatsapp": "-",
+      "address": "Toko",
+      "customerType": "umum",
+      "creditLimit": 0,
+      "receivableBalance": 0,
+      "loyaltyPoints": 0,
+      "notes": "Pelanggan walk-in biasa",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cust-001",
+      "code": "CUST-001",
+      "name": "Warung Bu Siti",
+      "phone": "081312345678",
+      "whatsapp": "081312345678",
+      "address": "Jl. Melati RT 03/RW 04 No. 15",
+      "customerType": "grosir",
+      "creditLimit": 5000000,
+      "receivableBalance": 0,
+      "loyaltyPoints": 120,
+      "notes": "Langganan grosir mingguan",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "cust-002",
+      "code": "CUST-002",
+      "name": "Ibu Ratna (Member VIP)",
+      "phone": "081298761234",
+      "whatsapp": "081298761234",
+      "address": "Komplek Permata Hijau Blok C No. 9",
+      "customerType": "member",
+      "creditLimit": 1500000,
+      "receivableBalance": 0,
+      "loyaltyPoints": 340,
+      "notes": "Member setia bulanan",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-001",
+      "sku": "BRS-PANDAN-5KG",
+      "barcode": "8991234001015",
+      "name": "Beras Pandan Wangi Super 5 Kg",
+      "categoryId": "cat-sembako",
+      "brandId": null,
+      "unitId": "unit-pack",
+      "purchasePrice": 68000,
+      "avgCost": 68000,
+      "sellingPrice": 76000,
+      "wholesalePrice": 72000,
+      "minWholesaleQty": 5,
+      "stock": 45,
+      "minStock": 10,
+      "locationRack": "Rak A-01 Sembako",
+      "supplierId": "sup-001",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-002",
+      "sku": "MYK-BIMOLI-2L",
+      "barcode": "8991234001022",
+      "name": "Minyak Goreng Bimoli Spesial 2 Liter Pouch",
+      "categoryId": "cat-sembako",
+      "brandId": "brd-indofood",
+      "unitId": "unit-pcs",
+      "purchasePrice": 32000,
+      "avgCost": 32000,
+      "sellingPrice": 37500,
+      "wholesalePrice": 35000,
+      "minWholesaleQty": 6,
+      "stock": 60,
+      "minStock": 12,
+      "locationRack": "Rak A-02 Minyak",
+      "supplierId": "sup-001",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-003",
+      "sku": "GUL-GMP-1KG",
+      "barcode": "8991234001039",
+      "name": "Gula Pasir Kristal Putih 1 Kg",
+      "categoryId": "cat-sembako",
+      "brandId": null,
+      "unitId": "unit-kg",
+      "purchasePrice": 15200,
+      "avgCost": 15200,
+      "sellingPrice": 17500,
+      "wholesalePrice": 16500,
+      "minWholesaleQty": 10,
+      "stock": 80,
+      "minStock": 15,
+      "locationRack": "Rak A-03 Gula",
+      "supplierId": "sup-001",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-004",
+      "sku": "MIE-INDOMIE-GORENG",
+      "barcode": "089686010118",
+      "name": "Indomie Mie Goreng Original 85g",
+      "categoryId": "cat-makanan",
+      "brandId": "brd-indofood",
+      "unitId": "unit-pcs",
+      "purchasePrice": 2800,
+      "avgCost": 2800,
+      "sellingPrice": 3500,
+      "wholesalePrice": 3100,
+      "minWholesaleQty": 40,
+      "stock": 240,
+      "minStock": 40,
+      "locationRack": "Rak B-01 Mie",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-005",
+      "sku": "MIE-INDOMIE-AYAMBAWANG",
+      "barcode": "089686010323",
+      "name": "Indomie Kuah Rasa Ayam Bawang 69g",
+      "categoryId": "cat-makanan",
+      "brandId": "brd-indofood",
+      "unitId": "unit-pcs",
+      "purchasePrice": 2750,
+      "avgCost": 2750,
+      "sellingPrice": 3500,
+      "wholesalePrice": 3050,
+      "minWholesaleQty": 40,
+      "stock": 180,
+      "minStock": 30,
+      "locationRack": "Rak B-01 Mie",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-006",
+      "sku": "MIN-AQUA-600ML",
+      "barcode": "8992753123451",
+      "name": "Aqua Air Mineral Botol 600ml",
+      "categoryId": "cat-minuman",
+      "brandId": "brd-danone",
+      "unitId": "unit-pcs",
+      "purchasePrice": 2600,
+      "avgCost": 2600,
+      "sellingPrice": 4000,
+      "wholesalePrice": 3300,
+      "minWholesaleQty": 24,
+      "stock": 96,
+      "minStock": 24,
+      "locationRack": "Rak C-01 Chiller",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-007",
+      "sku": "MIN-KOP-KAPALAPI-165G",
+      "barcode": "8991002101018",
+      "name": "Kopi Kapal Api Spesial Mix 10 x 24g",
+      "categoryId": "cat-minuman",
+      "brandId": null,
+      "unitId": "unit-renteng",
+      "purchasePrice": 12500,
+      "avgCost": 12500,
+      "sellingPrice": 15000,
+      "wholesalePrice": 13500,
+      "minWholesaleQty": 5,
+      "stock": 35,
+      "minStock": 8,
+      "locationRack": "Rak C-02 Kopi",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-008",
+      "sku": "PBR-RINSO-ANTI-NODA-770G",
+      "barcode": "8999999042318",
+      "name": "Rinso Anti Noda Deterjen Bubuk 770g",
+      "categoryId": "cat-pembersih",
+      "brandId": "brd-unilever",
+      "unitId": "unit-pack",
+      "purchasePrice": 21500,
+      "avgCost": 21500,
+      "sellingPrice": 26000,
+      "wholesalePrice": 24000,
+      "minWholesaleQty": 6,
+      "stock": 4,
+      "minStock": 8,
+      "locationRack": "Rak D-01 Deterjen",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-009",
+      "sku": "PBR-SUNLIGHT-LIME-650ML",
+      "barcode": "8999999021238",
+      "name": "Sunlight Pencuci Piring Jeruk Nipis 650ml",
+      "categoryId": "cat-pembersih",
+      "brandId": "brd-unilever",
+      "unitId": "unit-pack",
+      "purchasePrice": 13200,
+      "avgCost": 13200,
+      "sellingPrice": 16500,
+      "wholesalePrice": 15000,
+      "minWholesaleQty": 6,
+      "stock": 0,
+      "minStock": 10,
+      "locationRack": "Rak D-02 Sabun",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    },
+    {
+      "id": "prod-010",
+      "sku": "BMB-KECAP-BANGO-520ML",
+      "barcode": "8999999031206",
+      "name": "Kecap Manis Bango Refill 520ml",
+      "categoryId": "cat-bumbu",
+      "brandId": "brd-unilever",
+      "unitId": "unit-pack",
+      "purchasePrice": 22000,
+      "avgCost": 22000,
+      "sellingPrice": 26500,
+      "wholesalePrice": 24500,
+      "minWholesaleQty": 4,
+      "stock": 22,
+      "minStock": 6,
+      "locationRack": "Rak B-03 Bumbu",
+      "supplierId": "sup-002",
+      "imageUrl": "",
+      "status": "active",
+      "createdAt": "2026-09-29T09:41:17.214Z",
+      "updatedAt": "2026-09-29T09:41:17.214Z",
+      "deletedAt": null
+    }
+  ],
+  "stockMovements": [
+    {
+      "id": "sm-init-prod-001",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-001",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 45,
+      "stockOut": 0,
+      "stockAfter": 45,
+      "costPrice": 68000,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-002",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-002",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 60,
+      "stockOut": 0,
+      "stockAfter": 60,
+      "costPrice": 32000,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-003",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-003",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 80,
+      "stockOut": 0,
+      "stockAfter": 80,
+      "costPrice": 15200,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-004",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-004",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 240,
+      "stockOut": 0,
+      "stockAfter": 240,
+      "costPrice": 2800,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-005",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-005",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 180,
+      "stockOut": 0,
+      "stockAfter": 180,
+      "costPrice": 2750,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-006",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-006",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 96,
+      "stockOut": 0,
+      "stockAfter": 96,
+      "costPrice": 2600,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-007",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-007",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 35,
+      "stockOut": 0,
+      "stockAfter": 35,
+      "costPrice": 12500,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-008",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-008",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 4,
+      "stockOut": 0,
+      "stockAfter": 4,
+      "costPrice": 21500,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    },
+    {
+      "id": "sm-init-prod-010",
+      "movementDate": "2026-09-29T09:41:17.214Z",
+      "productId": "prod-010",
+      "movementType": "stok_awal",
+      "referenceNo": "INIT-STOCK-2026",
+      "stockBefore": 0,
+      "stockIn": 22,
+      "stockOut": 0,
+      "stockAfter": 22,
+      "costPrice": 22000,
+      "userId": "usr-admin",
+      "notes": "Saldo stok awal sistem KASIRPRO",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "cashierShifts": [],
+  "purchases": [],
+  "purchaseItems": [],
+  "accountsPayable": [],
+  "payablePayments": [],
+  "sales": [],
+  "saleItems": [],
+  "accountsReceivable": [],
+  "receivablePayments": [],
+  "salesReturns": [],
+  "salesReturnItems": [],
+  "stockOpnames": [],
+  "stockOpnameItems": [],
+  "cashTransactions": [
+    {
+      "id": "ct-init-modal",
+      "transactionNo": "CASH-INIT-001",
+      "transactionDate": "2026-09-29T09:41:17.214Z",
+      "transactionType": "modal_awal_shift",
+      "category": "Modal Usaha Toko",
+      "amountIn": 2500000,
+      "amountOut": 0,
+      "balanceAfter": 2500000,
+      "referenceNo": "SETUP-STORE",
+      "userId": "usr-admin",
+      "notes": "Modal awal kas operasional toko",
+      "createdAt": "2026-09-29T09:41:17.214Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "audit-1793011384764-myb29",
+      "createdAt": "2026-10-26T10:43:04.764Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1793011363902-7emn8",
+      "createdAt": "2026-10-26T10:42:43.902Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1793011351700-iqxmi",
+      "createdAt": "2026-10-26T10:42:31.700Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1791375366323-wgh4z",
+      "createdAt": "2026-10-07T12:16:06.323Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1791374984289-duio9",
+      "createdAt": "2026-10-07T12:09:44.289Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790688268953-tjwph",
+      "createdAt": "2026-09-29T13:24:28.953Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "UPDATE_SETTINGS",
+      "module": "Pengaturan",
+      "recordId": "setting-primary",
+      "details": "Memperbarui konfigurasi aplikasi & toko 'Toko Sumber Rejeki'.",
+      "dataBefore": {
+        "id": "setting-primary",
+        "storeName": "",
+        "logoUrl": "",
+        "address": "",
+        "phone": "",
+        "whatsapp": "",
+        "email": "",
+        "taxIdNpwp": "",
+        "receiptFooter": "Terima kasih atas kunjungan Anda.",
+        "currencySymbol": "Rp",
+        "invoicePrefix": "INV",
+        "defaultTaxRate": 0,
+        "defaultMinStock": 5,
+        "receiptPaperSize": "58mm",
+        "autoPrintReceipt": true,
+        "enableSoundEffects": true,
+        "maxDiscountWithoutPin": 10,
+        "updatedAt": "2026-09-29T09:41:17.142Z"
+      },
+      "dataAfter": {
+        "id": "setting-primary",
+        "storeName": "Toko Sumber Rejeki",
+        "logoUrl": "",
+        "address": "Jl. Mawar No. 10",
+        "phone": "08123456789",
+        "whatsapp": "",
+        "email": "",
+        "taxIdNpwp": "",
+        "receiptFooter": "Terima kasih atas kunjungan Anda.",
+        "currencySymbol": "Rp",
+        "invoicePrefix": "INV",
+        "defaultTaxRate": 0,
+        "defaultMinStock": 5,
+        "receiptPaperSize": "58mm",
+        "autoPrintReceipt": true,
+        "enableSoundEffects": true,
+        "maxDiscountWithoutPin": 10,
+        "updatedAt": "2026-09-29T13:24:28.952Z"
+      },
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790688255232-831pr",
+      "createdAt": "2026-09-29T13:24:15.232Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "CREATE_USER",
+      "module": "Pengguna",
+      "recordId": "usr-1790688255134",
+      "details": "Membuat akun baru Budi Kasir (@kasir01) dengan role role-kasir.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790688241210-9vjoj",
+      "createdAt": "2026-09-29T13:24:01.210Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790685211923-4ijpe",
+      "createdAt": "2026-09-29T12:33:31.923Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790682436081-24w02",
+      "createdAt": "2026-09-29T11:47:16.081Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    },
+    {
+      "id": "audit-1790674888989-f0a2b",
+      "createdAt": "2026-09-29T09:41:28.989Z",
+      "userId": "usr-admin",
+      "username": "admin",
+      "action": "LOGIN",
+      "module": "Autentikasi",
+      "recordId": "usr-admin",
+      "details": "User Administrator (admin) berhasil login.",
+      "ipAddress": "::ffff:127.0.0.1"
+    }
+  ],
+  "storeSettings": {
+    "id": "setting-primary",
+    "storeName": "Toko Sumber Rejeki",
+    "logoUrl": "",
+    "address": "Jl. Mawar No. 10",
+    "phone": "08123456789",
+    "whatsapp": "",
+    "email": "",
+    "taxIdNpwp": "",
+    "receiptFooter": "Terima kasih atas kunjungan Anda.",
+    "currencySymbol": "Rp",
+    "invoicePrefix": "INV",
+    "defaultTaxRate": 0,
+    "defaultMinStock": 5,
+    "receiptPaperSize": "58mm",
+    "autoPrintReceipt": true,
+    "enableSoundEffects": true,
+    "maxDiscountWithoutPin": 10,
+    "updatedAt": "2026-09-29T13:24:28.952Z"
+  },
+  "idempotencyTokens": {}
+}

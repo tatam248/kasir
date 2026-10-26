@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mandiri-navy: #002855;
+  --color-mandiri-navy-dark: #001a38;
+  --color-mandiri-navy-light: #003e80;
+  --color-mandiri-orange: #f37021;
+  --color-mandiri-orange-dark: #d8570c;
+  --color-mandiri-gold: #fbb900;
+  --color-mandiri-yellow: #ffc72c;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Custom sleek scrollbar for main page content */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Custom scrollbar specifically inside dark sidebar */
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 65, 85, 0.8) rgba(15, 23, 42, 0.6);
+}
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 4px;
+}
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #fbb900;
+}
+
