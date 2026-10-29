@@ -106,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     {
       label: 'Keuangan & Laporan',
       items: [
-        { id: 'cash', label: 'Buku Kas', icon: Wallet, perm: 'report.finance' },
+        { id: 'cash', label: 'Kas Besar (Buku Kas)', icon: Wallet, perm: 'report.finance' },
         { id: 'shifts', label: 'Shift Kasir', icon: Clock, perm: null },
         { id: 'reports', label: 'Laporan & Laba', icon: BarChart3, perm: 'report.sales' },
       ],

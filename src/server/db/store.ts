@@ -9,6 +9,7 @@ import {
   Brand,
   CashierShift,
   CashTransaction,
+  CashTransactionType,
   Category,
   Customer,
   PayablePayment,
@@ -842,6 +843,56 @@ class DatabaseStore {
     this.data.cashTransactions.push(tx);
     this.save();
     return tx;
+  }
+
+  public recalculateCashBalances(): number {
+    // Sort transactions chronologically by transactionDate to ensure running balance accuracy
+    this.data.cashTransactions.sort(
+      (a, b) => new Date(a.transactionDate).getTime() - new Date(b.transactionDate).getTime()
+    );
+    let running = 0;
+    for (const tx of this.data.cashTransactions) {
+      running += (Number(tx.amountIn) || 0) - (Number(tx.amountOut) || 0);
+      tx.balanceAfter = running;
+    }
+    return running;
+  }
+
+  public updateCashTransaction(
+    id: string,
+    updates: {
+      category?: string;
+      amountIn?: number;
+      amountOut?: number;
+      transactionType?: CashTransactionType;
+      notes?: string;
+      transactionDate?: string;
+    }
+  ): CashTransaction | null {
+    const idx = this.data.cashTransactions.findIndex((t) => t.id === id);
+    if (idx === -1) return null;
+
+    const tx = this.data.cashTransactions[idx];
+    if (updates.category !== undefined) tx.category = updates.category.trim();
+    if (updates.amountIn !== undefined) tx.amountIn = Number(updates.amountIn) || 0;
+    if (updates.amountOut !== undefined) tx.amountOut = Number(updates.amountOut) || 0;
+    if (updates.transactionType !== undefined) tx.transactionType = updates.transactionType;
+    if (updates.notes !== undefined) tx.notes = updates.notes;
+    if (updates.transactionDate !== undefined) tx.transactionDate = updates.transactionDate;
+
+    this.recalculateCashBalances();
+    this.save();
+    return tx;
+  }
+
+  public deleteCashTransaction(id: string): CashTransaction | null {
+    const idx = this.data.cashTransactions.findIndex((t) => t.id === id);
+    if (idx === -1) return null;
+
+    const [removed] = this.data.cashTransactions.splice(idx, 1);
+    this.recalculateCashBalances();
+    this.save();
+    return removed;
   }
 
   // --- STOCK LEDGER ---

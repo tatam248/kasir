@@ -89,6 +89,23 @@ export function requirePermission(permissionCode: string) {
   };
 }
 
+export function requireRole(allowedRoles: string[]) {
+  return (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: 'Akses ditolak. Silakan login.' });
+    }
+
+    if (allowedRoles.includes(req.user.roleCode)) {
+      return next();
+    }
+
+    return res.status(403).json({
+      success: false,
+      message: 'Akses ditolak. Aksi ini hanya dapat dilakukan oleh Super Admin dan Pemilik Toko.',
+    });
+  };
+}
+
 export function verifySupervisorPin(pin: string): User | null {
   if (!pin) return null;
   const data = db.getData();

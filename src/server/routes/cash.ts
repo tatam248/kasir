@@ -1,11 +1,11 @@
 import { Router, Response } from 'express';
 import { db } from '../db/store.ts';
-import { authenticate, AuthenticatedRequest, requirePermission } from '../middleware/auth.ts';
+import { authenticate, AuthenticatedRequest, requirePermission, requireRole } from '../middleware/auth.ts';
 import { CashTransactionType } from '../db/types.ts';
 
 const router = Router();
 
-// GET /api/cash (Buku Kas)
+// GET /api/cash (Buku Kas / Kas Besar)
 router.get('/', authenticate, requirePermission('report.finance'), (req: AuthenticatedRequest, res: Response) => {
   const { startDate, endDate, transactionType, category } = req.query;
   const data = db.getData();
@@ -92,7 +92,7 @@ router.post('/manual', authenticate, requirePermission('report.finance'), (req: 
       userId: req.user!.id,
       username: req.user!.username,
       action: isExpense ? 'MANUAL_CASH_EXPENSE' : 'MANUAL_CASH_INCOME',
-      module: 'Buku Kas',
+      module: 'Kas Besar',
       recordId: tx.id,
       details: `${isExpense ? 'Pengeluaran' : 'Pemasukan'} kas ${category} senilai Rp ${val.toLocaleString('id-ID')}. Saldo setelahnya: Rp ${tx.balanceAfter.toLocaleString('id-ID')}.`,
       ipAddress: req.ip || null,
@@ -102,6 +102,96 @@ router.post('/manual', authenticate, requirePermission('report.finance'), (req: 
       success: true,
       message: `${isExpense ? 'Pengeluaran' : 'Pemasukan'} kas berhasil dicatat. Saldo kas saat ini: Rp ${tx.balanceAfter.toLocaleString('id-ID')}.`,
       transaction: tx,
+    });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// PUT /api/cash/:id (Edit Transaksi Kas Besar - Hanya Super Admin & Pemilik)
+router.put('/:id', authenticate, requireRole(['super_admin', 'owner']), (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { category, amount, type, notes, transactionDate } = req.body;
+
+    const val = Number(amount);
+    if (!val || val <= 0 || !category) {
+      return res.status(400).json({ success: false, message: 'Kategori dan nominal (> 0) wajib diisi.' });
+    }
+
+    const data = db.getData();
+    const existing = data.cashTransactions.find((t) => t.id === id);
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Transaksi kas tidak ditemukan.' });
+    }
+
+    const isExpense = type === 'out';
+    const txType: CashTransactionType = isExpense ? 'pengeluaran_operasional' : 'pendapatan_lainnya';
+
+    const updated = db.updateCashTransaction(id, {
+      category: category.trim(),
+      amountIn: isExpense ? 0 : val,
+      amountOut: isExpense ? val : 0,
+      transactionType: txType,
+      notes: notes || '',
+      transactionDate: transactionDate ? new Date(transactionDate).toISOString() : existing.transactionDate,
+    });
+
+    if (!updated) {
+      return res.status(404).json({ success: false, message: 'Gagal memperbarui transaksi kas.' });
+    }
+
+    db.logAudit({
+      userId: req.user!.id,
+      username: req.user!.username,
+      action: 'EDIT_CASH_TRANSACTION',
+      module: 'Kas Besar',
+      recordId: id,
+      details: `Mengubah transaksi kas ${existing.transactionNo} (${category}) menjadi Rp ${val.toLocaleString('id-ID')} (${isExpense ? 'Keluar' : 'Masuk'}). Saldo akhir dihitung ulang.`,
+      ipAddress: req.ip || null,
+    });
+
+    return res.json({
+      success: true,
+      message: 'Transaksi kas berhasil diperbarui dan saldo kas telah dihitung ulang.',
+      transaction: updated,
+      currentBalance: db.getCashBalance(),
+    });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// DELETE /api/cash/:id (Hapus Transaksi Kas Besar - Hanya Super Admin & Pemilik)
+router.delete('/:id', authenticate, requireRole(['super_admin', 'owner']), (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const data = db.getData();
+    const existing = data.cashTransactions.find((t) => t.id === id);
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Transaksi kas tidak ditemukan.' });
+    }
+
+    const removed = db.deleteCashTransaction(id);
+    if (!removed) {
+      return res.status(404).json({ success: false, message: 'Gagal menghapus transaksi kas.' });
+    }
+
+    db.logAudit({
+      userId: req.user!.id,
+      username: req.user!.username,
+      action: 'DELETE_CASH_TRANSACTION',
+      module: 'Kas Besar',
+      recordId: id,
+      details: `Menghapus transaksi kas ${removed.transactionNo} (${removed.category}) senilai Rp ${(removed.amountIn || removed.amountOut).toLocaleString('id-ID')}. Saldo akhir dihitung ulang.`,
+      ipAddress: req.ip || null,
+    });
+
+    return res.json({
+      success: true,
+      message: `Transaksi kas ${removed.transactionNo} berhasil dihapus. Saldo kas telah dihitung ulang.`,
+      currentBalance: db.getCashBalance(),
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, message: err.message });
